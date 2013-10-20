@@ -19,9 +19,16 @@
 
 package org.apache.fop.servlet;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -75,6 +82,8 @@ public class FopServlet extends HttpServlet {
     protected static final String XML_REQUEST_PARAM = "xml";
     /** Name of the parameter used for the XSLT file */
     protected static final String XSLT_REQUEST_PARAM = "xslt";
+
+    protected static final String TEMP_PREFIX = "pdfgen.tmp.";
 
     /** The TransformerFactory used to create Transformer instances */
     protected TransformerFactory transFactory = null;
@@ -131,7 +140,53 @@ public class FopServlet extends HttpServlet {
             throw new ServletException(ex);
         }
     }
+    /**
+     * Handles the HTTP
+     * <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException {
 
+        File post;
+        //accept UTF-8 by default
+        try {
+            if (request.getCharacterEncoding() == null) {
+                request.setCharacterEncoding("UTF-8");
+            }
+        } catch (UnsupportedEncodingException ex) {
+            throw new ServletException(ex);
+        }
+        //save post data to temp file
+        try {
+            post = java.io.File.createTempFile(TEMP_PREFIX, "post");
+            Writer out = new OutputStreamWriter(new BufferedOutputStream(new FileOutputStream(post)), "UTF-8");
+
+            // Get a reader to read the incoming data
+            BufferedReader reader = request.getReader();
+            char[] buf = new char[4 * 1024];  // 4Kchar buffer
+            int len;
+            while ((len = reader.read(buf, 0, buf.length)) != -1) {
+                out.write(buf, 0, len);
+            }
+            out.close();
+            if (post.length() < 1) {
+                throw new ServletException();
+            }
+        } catch (IOException ex) {
+            throw new ServletException(ex);
+        }
+	try {
+		renderFO(post.getAbsolutePath(), response);
+        } catch (Exception ex) {
+            throw new ServletException(ex);
+        }
+	post.delete();
+
+}
     /**
      * Converts a String parameter to a JAXP Source object.
      * @param param a String parameter
@@ -235,7 +290,7 @@ public class FopServlet extends HttpServlet {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
         //Setup FOP
-        Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, out);
+        Fop fop = fopFactory.newFop("application/pdf", foUserAgent, out);
 
         //Make sure the XSL transformation's result is piped through to FOP
         Result res = new SAXResult(fop.getDefaultHandler());
