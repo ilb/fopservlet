@@ -28,6 +28,9 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
+import java.net.MalformedURLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 
 
@@ -43,6 +46,9 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.URIResolver;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
+import org.apache.avalon.framework.configuration.Configuration;
+import org.apache.avalon.framework.configuration.ConfigurationException;
+import org.apache.avalon.framework.configuration.DefaultConfigurationBuilder;
 
 import org.apache.commons.io.output.ByteArrayOutputStream;
 
@@ -99,22 +105,15 @@ public class FopServlet extends HttpServlet {
      * {@inheritDoc}
      */
     public void init() throws ServletException {
+        ctx = getServletConfig().getServletContext();
+        Logger.getLogger(FopServlet.class.getName()).log(Level.INFO, "Servlet context = {0}", ctx.getRealPath(""));
+        System.setProperty("user.dir", ctx.getRealPath(""));
         this.uriResolver = new ServletContextURIResolver(getServletContext());
         this.transFactory = TransformerFactory.newInstance();
         this.transFactory.setURIResolver(this.uriResolver);
         //Configure FopFactory as desired
         this.fopFactory = FopFactory.newInstance();
         this.fopFactory.setURIResolver(this.uriResolver);
-        configureFopFactory();
-    }
-
-    /**
-     * This method is called right after the FopFactory is instantiated and can be overridden
-     * by subclasses to perform additional configuration.
-     */
-    protected void configureFopFactory() throws ServletException {
-        ctx = getServletConfig().getServletContext();
-        System.setProperty("user.dir", ctx.getRealPath(""));
         try {
             this.fopFactory.setUserConfig(new File(ctx.getRealPath("fopconf.xml")));
         } catch (SAXException ex) {
@@ -122,6 +121,21 @@ public class FopServlet extends HttpServlet {
         } catch (IOException ex) {
             throw new ServletException(ex);
         }
+        try {
+            fopFactory.setBaseURL("file://"+ctx.getRealPath(""));
+            fopFactory.getFontManager().setFontBaseURL("file://"+ctx.getRealPath(""));
+        } catch (MalformedURLException ex) {
+            throw new ServletException(ex);
+        }
+
+        configureFopFactory();
+    }
+
+    /**
+     * This method is called right after the FopFactory is instantiated and can be overridden
+     * by subclasses to perform additional configuration.
+     */
+    protected void configureFopFactory() {
     }
 
     /**
