@@ -114,6 +114,7 @@ public class FopServlet extends HttpServlet {
      */
     protected void configureFopFactory() throws ServletException {
         ctx = getServletConfig().getServletContext();
+        System.setProperty("user.dir", ctx.getRealPath(""));
         try {
             this.fopFactory.setUserConfig(new File(ctx.getRealPath("fopconf.xml")));
         } catch (SAXException ex) {

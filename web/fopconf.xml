@@ -79,7 +79,9 @@ the location of this file.
         </font>
         -->
         <directory>fonts</directory>
+        <!--
         <auto-detect/>
+        -->
       </fonts>
 
       <!-- This option lets you specify additional options on an XML handler -->
