@@ -28,6 +28,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
+import javax.servlet.ServletContext;
 
 
 import javax.servlet.ServletException;
@@ -50,6 +51,7 @@ import org.apache.fop.apps.FOUserAgent;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
+import org.xml.sax.SAXException;
 
 /**
  * Example servlet to generate a PDF from a servlet.
@@ -91,6 +93,7 @@ public class FopServlet extends HttpServlet {
     protected FopFactory fopFactory = null;
     /** URIResolver for use by this servlet */
     protected URIResolver uriResolver;
+    ServletContext ctx;
 
     /**
      * {@inheritDoc}
@@ -109,8 +112,15 @@ public class FopServlet extends HttpServlet {
      * This method is called right after the FopFactory is instantiated and can be overridden
      * by subclasses to perform additional configuration.
      */
-    protected void configureFopFactory() {
-        //Subclass and override this method to perform additional configuration
+    protected void configureFopFactory() throws ServletException {
+        ctx = getServletConfig().getServletContext();
+        try {
+            this.fopFactory.setUserConfig(new File(ctx.getRealPath("fopconf.xml")));
+        } catch (SAXException ex) {
+            throw new ServletException(ex);
+        } catch (IOException ex) {
+            throw new ServletException(ex);
+        }
     }
 
     /**

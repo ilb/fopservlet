@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns="http://www.w3.org/1999/xhtml" xmlns:xref="http://www.ecb.int/vocabulary/2002-08-01/eurofxref" font-family="Arial" font-size="10pt" language="en">
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns="http://www.w3.org/1999/xhtml" xmlns:xref="http://www.ecb.int/vocabulary/2002-08-01/eurofxref" font-family="Liberation Serif" font-size="10pt" language="en">
   <fo:layout-master-set>
     <fo:simple-page-master master-name="A4Form" page-height="29.7cm" page-width="21cm" margin="1cm 1.5cm 1cm 1.5cm">
       <fo:region-body/>
     </fo:simple-page-master>
   </fo:layout-master-set>
   <fo:page-sequence master-reference="A4Form" initial-page-number="1">
-    <fo:flow flow-name="xsl-region-body" font-size="8pt" font-family="Courier New">
+    <fo:flow flow-name="xsl-region-body" font-size="8pt" font-family="Liberation Serif">
       <fo:block-container width="125mm" border-bottom-style="solid" border-width="thin" space-after="2mm">
-        <fo:block space-after="2mm">Currency rates</fo:block>
+        <fo:block space-after="2mm">Currency rates / Курсы валют 2013-10-25</fo:block>
         <fo:table table-layout="fixed" width="125mm">
           <fo:table-column column-width="100mm"/>
           <fo:table-column column-width="25mm"/>
@@ -26,7 +26,7 @@
                 <fo:block>USD</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>1.3684</fo:block>
+                <fo:block>1.3777</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -34,7 +34,7 @@
                 <fo:block>JPY</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>133.73</fo:block>
+                <fo:block>134.15</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -50,7 +50,7 @@
                 <fo:block>CZK</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>25.782</fo:block>
+                <fo:block>25.750</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -58,7 +58,7 @@
                 <fo:block>DKK</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>7.4586</fo:block>
+                <fo:block>7.4590</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -66,7 +66,7 @@
                 <fo:block>GBP</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>0.84515</fo:block>
+                <fo:block>0.85190</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -74,7 +74,7 @@
                 <fo:block>HUF</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>294.43</fo:block>
+                <fo:block>292.82</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -90,7 +90,7 @@
                 <fo:block>LVL</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>0.7027</fo:block>
+                <fo:block>0.7026</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -98,7 +98,7 @@
                 <fo:block>PLN</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>4.1808</fo:block>
+                <fo:block>4.1858</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -106,7 +106,7 @@
                 <fo:block>RON</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>4.4509</fo:block>
+                <fo:block>4.4511</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -114,7 +114,7 @@
                 <fo:block>SEK</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>8.7686</fo:block>
+                <fo:block>8.7351</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -122,7 +122,7 @@
                 <fo:block>CHF</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>1.2343</fo:block>
+                <fo:block>1.2348</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -130,7 +130,7 @@
                 <fo:block>NOK</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>8.0985</fo:block>
+                <fo:block>8.1370</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -138,7 +138,7 @@
                 <fo:block>HRK</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>7.6160</fo:block>
+                <fo:block>7.6265</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -146,7 +146,7 @@
                 <fo:block>RUB</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>43.5830</fo:block>
+                <fo:block>43.8000</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -154,7 +154,7 @@
                 <fo:block>TRY</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>2.6903</fo:block>
+                <fo:block>2.7367</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -162,7 +162,7 @@
                 <fo:block>AUD</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>1.4173</fo:block>
+                <fo:block>1.4369</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -170,7 +170,7 @@
                 <fo:block>BRL</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>2.9448</fo:block>
+                <fo:block>3.0121</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -178,7 +178,7 @@
                 <fo:block>CAD</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>1.4089</fo:block>
+                <fo:block>1.4380</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -186,7 +186,7 @@
                 <fo:block>CNY</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>8.3431</fo:block>
+                <fo:block>8.3814</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -194,7 +194,7 @@
                 <fo:block>HKD</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>10.6099</fo:block>
+                <fo:block>10.6820</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -202,7 +202,7 @@
                 <fo:block>IDR</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>15502.27</fo:block>
+                <fo:block>15175.04</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -210,7 +210,7 @@
                 <fo:block>ILS</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>4.8308</fo:block>
+                <fo:block>4.8658</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -218,7 +218,7 @@
                 <fo:block>INR</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>83.8350</fo:block>
+                <fo:block>84.7680</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -226,7 +226,7 @@
                 <fo:block>KRW</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>1451.88</fo:block>
+                <fo:block>1464.88</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -234,7 +234,7 @@
                 <fo:block>MXN</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>17.4977</fo:block>
+                <fo:block>17.8719</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -242,7 +242,7 @@
                 <fo:block>MYR</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>4.3197</fo:block>
+                <fo:block>4.3488</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -250,7 +250,7 @@
                 <fo:block>NZD</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>1.6125</fo:block>
+                <fo:block>1.6601</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -258,7 +258,7 @@
                 <fo:block>PHP</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>58.863</fo:block>
+                <fo:block>59.243</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -266,7 +266,7 @@
                 <fo:block>SGD</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>1.6934</fo:block>
+                <fo:block>1.7035</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -274,7 +274,7 @@
                 <fo:block>THB</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>42.489</fo:block>
+                <fo:block>42.842</fo:block>
               </fo:table-cell>
             </fo:table-row>
             <fo:table-row text-align="center">
@@ -282,7 +282,7 @@
                 <fo:block>ZAR</fo:block>
               </fo:table-cell>
               <fo:table-cell>
-                <fo:block>13.3871</fo:block>
+                <fo:block>13.5502</fo:block>
               </fo:table-cell>
             </fo:table-row>
           </fo:table-body>

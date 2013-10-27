@@ -5,17 +5,18 @@
 		exclude-result-prefixes="xsl fo">
 	<xsl:output method="xml" encoding="UTF-8" indent="yes"/>
 	<xsl:template match="/">
-		<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" font-family="Arial" font-size="10pt" language="en">
+		<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" font-family="Liberation Serif" font-size="10pt" language="en">
 			<fo:layout-master-set>
 				<fo:simple-page-master master-name="A4Form" page-height="29.7cm" page-width="21cm" margin="1cm 1.5cm 1cm 1.5cm">
 					<fo:region-body />
 				</fo:simple-page-master>
 			</fo:layout-master-set>
 			<fo:page-sequence master-reference="A4Form" initial-page-number="1">
-				<fo:flow flow-name="xsl-region-body" font-size="8pt" font-family="Courier New">
+				<fo:flow flow-name="xsl-region-body" font-size="8pt" font-family="Liberation Serif">
 					<fo:block-container width="125mm" border-bottom-style="solid" border-width="thin" space-after="2mm">
 						<fo:block space-after="2mm">
-							<xsl:text>Currency rates</xsl:text>
+							<xsl:text>Currency rates / Курсы валют </xsl:text>
+							<xsl:value-of select="//xref:Cube[@time]/@time"/>
 						</fo:block>
 						<fo:table table-layout="fixed" width="125mm">
 							<fo:table-column column-width="100mm"/>
