@@ -46,9 +46,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.URIResolver;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
-import org.apache.avalon.framework.configuration.Configuration;
-import org.apache.avalon.framework.configuration.ConfigurationException;
-import org.apache.avalon.framework.configuration.DefaultConfigurationBuilder;
 
 import org.apache.commons.io.output.ByteArrayOutputStream;
 
@@ -129,6 +126,7 @@ public class FopServlet extends HttpServlet {
         }
 
         configureFopFactory();
+        warmup();
     }
 
     /**
@@ -136,6 +134,28 @@ public class FopServlet extends HttpServlet {
      * by subclasses to perform additional configuration.
      */
     protected void configureFopFactory() {
+    }
+    /**
+     * This method is used to load fonts, etc at deploy
+     * @throws javax.servlet.ServletException
+     */
+    protected void warmup() throws ServletException {
+        try {
+            Logger.getLogger(FopServlet.class.getName()).log(Level.INFO, "start warm-up");
+            Transformer transformer = this.transFactory.newTransformer();
+            FOUserAgent foUserAgent = getFOUserAgent();
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            Fop fop = fopFactory.newFop("application/pdf", foUserAgent, out);
+            Result res = new SAXResult(fop.getDefaultHandler());
+            transformer.transform(convertString2Source("helloworld.fo"), res);
+            Logger.getLogger(FopServlet.class.getName()).log(Level.INFO, "end warm-up");
+        } catch (FOPException ex) {
+            Logger.getLogger(FopServlet.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ServletException(ex);
+        } catch (TransformerException ex) {
+            Logger.getLogger(FopServlet.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ServletException(ex);
+        }
     }
 
     /**
