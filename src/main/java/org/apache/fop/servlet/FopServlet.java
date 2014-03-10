@@ -164,6 +164,7 @@ public class FopServlet extends HttpServlet {
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException {
         try {
+            ctx = getServletConfig().getServletContext();
             //Get parameters
             String foParam = request.getParameter(FO_REQUEST_PARAM);
             String xmlParam = request.getParameter(XML_REQUEST_PARAM);
@@ -171,9 +172,9 @@ public class FopServlet extends HttpServlet {
 
             //Analyze parameters and decide with method to use
             if (foParam != null) {
-                renderFO(foParam, response);
+                renderFO(ctx.getRealPath(foParam), response);
             } else if ((xmlParam != null) && (xsltParam != null)) {
-                renderXML(xmlParam, xsltParam, response);
+                renderXML(ctx.getRealPath(xmlParam), ctx.getRealPath(xsltParam), response);
             } else {
                 response.setContentType("text/html");
                 PrintWriter out = response.getWriter();

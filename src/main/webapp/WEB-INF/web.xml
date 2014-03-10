@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    <description>fo to pdf transformer</description>
+    <display-name>fopservlet</display-name>
+    <servlet>
+        <servlet-name>fopservlet</servlet-name>
+        <servlet-class>org.apache.fop.servlet.FopServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>fopservlet</servlet-name>
+        <url-pattern>/fopservlet</url-pattern>
+    </servlet-mapping>    
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
