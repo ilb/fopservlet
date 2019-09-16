@@ -147,7 +147,7 @@ public class FopServlet extends HttpServlet {
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             Fop fop = fopFactory.newFop("application/pdf", foUserAgent, out);
             Result res = new SAXResult(fop.getDefaultHandler());
-            transformer.transform(convertString2Source("helloworld.fo"), res);
+            transformer.transform(convertString2Source(ctx.getRealPath("helloworld.fo")), res);
             Logger.getLogger(FopServlet.class.getName()).log(Level.INFO, "end warm-up");
         } catch (FOPException ex) {
             Logger.getLogger(FopServlet.class.getName()).log(Level.SEVERE, null, ex);
