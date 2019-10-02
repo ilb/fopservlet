@@ -5,3 +5,4 @@ Slightly modified version of apache fop servlet example http://xmlgraphics.apach
 
 example usage: https://github.com/bystrobank/eurofxref-daily
 
+[Demo version](https://demo01.ilb.ru/fopservlet/)
